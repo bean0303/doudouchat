@@ -9,7 +9,7 @@ import requests
 def ask_api(
     file: _TemporaryFileWrapper,
     question: str,
-    url: str,
+    url: str = '',
     lcserve_host:str ='http://localhost:8080',
 ) -> str:
 
@@ -53,7 +53,7 @@ def answer(file, question, history=[]):
     history.append(message)
     responses = [(u,b) for u,b in zip(history[::2], history[1::2])]
     question = ''
-    # print(responses)
+    print(responses)
     return responses, history
 
 
@@ -61,7 +61,7 @@ with gr.Blocks(css="#chatbot{height:530px} .overflow-y-auto{height:500px}") as r
     # pdf_url = gr.Textbox(label='Enter PDF URL here')
     # gr.Markdown("<center><h4>OR<h4></center>")
     file = gr.File(
-        label='Upload your PDF/ Research Paper / Book here', file_types=['.pdf']
+        label='请上传pdf文件', file_types=['.pdf']
     )
     chatbot = gr.Chatbot(elem_id="chatbot")
     state = gr.State([])

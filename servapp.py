@@ -94,7 +94,7 @@ def get_word_list(texts):
 
 class SemanticSearch:
     def __init__(self):
-        self.use = hub.load('./universal-mult/')
+        self.use = hub.load('../universal-mult/')
         self.fitted = False
 
     def fit(self, data, batch=1000, n_neighbors=5):
@@ -177,7 +177,7 @@ def generate_answer(question, openAI_key):
 
 
 def load_openai_key() -> str:
-    key = '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'
+    key = 'sk-IzH3TcfAsa8BIEtCh1T3BlbkFJOm1LXi5nKmNKhg7hJSAc'
     if key is None:
         raise ValueError(
             "[ERROR]: Please pass your OPENAI_API_KEY. Get your key here : https://platform.openai.com/account/api-keys"
