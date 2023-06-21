@@ -72,6 +72,5 @@ with gr.Blocks(css="#chatbot{height:530px} .overflow-y-auto{height:500px}") as r
             outputs=[chatbot, state],
     )
 
-
     
 rxbot.launch()
