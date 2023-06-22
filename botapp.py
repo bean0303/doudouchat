@@ -57,7 +57,7 @@ def answer(file, question, history=[]):
     return responses, history
 
 
-with gr.Blocks(css="#chatbot{height:530px} .overflow-y-auto{height:500px}") as rxbot:
+with gr.Blocks(css="#chatbot{height:530px} .overflow-y-auto{height:500px}",title="doudouchat") as rxbot:
     # pdf_url = gr.Textbox(label='Enter PDF URL here')
     # gr.Markdown("<center><h4>OR<h4></center>")
     file = gr.File(
@@ -73,4 +73,4 @@ with gr.Blocks(css="#chatbot{height:530px} .overflow-y-auto{height:500px}") as r
     )
 
     
-rxbot.launch()
+rxbot.launch(server_name="www.doudou.chat",server_port=80,auth=("admin","douchat"))
