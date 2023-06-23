@@ -177,7 +177,7 @@ def generate_answer(question, openAI_key):
 
 
 def load_openai_key() -> str:
-    key = 'sk-IzH3TcfAsa8BIEtCh1T3BlbkFJOm1LXi5nKmNKhg7hJSAc'
+    key = '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'
     if key is None:
         raise ValueError(
             "[ERROR]: Please pass your OPENAI_API_KEY. Get your key here : https://platform.openai.com/account/api-keys"
