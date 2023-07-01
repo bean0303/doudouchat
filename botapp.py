@@ -73,4 +73,4 @@ with gr.Blocks(css="#chatbot{height:530px} .overflow-y-auto{height:500px}",title
     )
 
     
-rxbot.launch(server_name="0.0.0.0",server_port=7860,auth=("admin","douchat"))
+rxbot.launch(server_name="0.0.0.0",server_port=7860,auth=("admin","douchat"),share=False)
