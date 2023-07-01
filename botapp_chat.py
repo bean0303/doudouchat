@@ -113,16 +113,17 @@ def add_file_url(url):
 
 def answer_chat(file, question, history=[], sourceid=''):
     history.append(question)
-    if sourceid != '':
-        message = chat(sourceid,question)
+    if sourceid != '':  
+        logging.debug(sourceid)
+        message = chat(sourceid,question)['Result']
     else:
         sourceid = add_file(file)['Source ID']
-        message = chat(sourceid,question)
+        message = chat(sourceid,question)['Result']
 
     history.append(message)
     responses = [(u,b) for u,b in zip(history[::2], history[1::2])]
     question = ''
-    return responses, history, sourceid
+    return responses, question, sourceid, history
 
 
     
@@ -134,13 +135,13 @@ with gr.Blocks(css="#chatbot{height:530px} .overflow-y-auto{height:500px}",title
     )
     chatbot = gr.Chatbot(elem_id="chatbot")
     state = gr.State([])
-    sourceid = ''
+    # sourceid = ''
     with gr.Row():
         txt = gr.Textbox(show_label=False, placeholder="请输入你的问题").style(container=False)
-        sourceid = gr.Textbox(show_label=False, placeholder="id").style(container=False)
+        sourceid = gr.Textbox(show_label=False, placeholder="id",visible=False).style(container=False)
     txt.submit(answer_chat,
             inputs=[file, txt, state, sourceid],
-            outputs=[chatbot, state, sourceid],
+            outputs=[chatbot, txt, sourceid, state],
     )
 
     
