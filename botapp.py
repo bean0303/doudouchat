@@ -54,7 +54,7 @@ def answer(file, question, history=[]):
     responses = [(u,b) for u,b in zip(history[::2], history[1::2])]
     question = ''
     print(responses)
-    return responses, history
+    return responses, question, history
 
 
 with gr.Blocks(css="#chatbot{height:530px} .overflow-y-auto{height:500px}",title="doudouchat") as rxbot:
@@ -69,7 +69,7 @@ with gr.Blocks(css="#chatbot{height:530px} .overflow-y-auto{height:500px}",title
         txt = gr.Textbox(show_label=False, placeholder="请输入你的问题").style(container=False)
     txt.submit(answer,
             inputs=[file, txt, state],
-            outputs=[chatbot, state],
+            outputs=[chatbot, txt, state],
     )
 
     
